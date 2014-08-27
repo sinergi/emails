@@ -1,5 +1,5 @@
 <?php
-namespace Sinergi\EmailQ;
+namespace Sinergi\EmailQueue;
 
 use Doctrine\ORM\EntityManager;
 use Sinergi\EmailQueue\Attachement\AttachementEntity;

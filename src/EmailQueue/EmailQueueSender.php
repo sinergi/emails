@@ -2,6 +2,7 @@
 namespace Sinergi\EmailQueue;
 
 use Exception;
+use Psr\Log\LoggerInterface;
 use Sinergi\EmailQueue\Driver\DriverInterface;
 
 class EmailQueueSender
@@ -17,17 +18,17 @@ class EmailQueueSender
     protected $driver;
 
     /**
-     * @var EmailQueueLogger
+     * @var LoggerInterface
      */
     protected $emailQueueLogger;
 
     /**
      * @param DriverInterface $driver
-     * @param EmailQueueLogger $emailQueueLogger
+     * @param LoggerInterface $emailQueueLogger
      */
     public function __construct(
         DriverInterface $driver,
-        EmailQueueLogger $emailQueueLogger = null
+        LoggerInterface $emailQueueLogger = null
     )
     {
         $this->driver = $driver;

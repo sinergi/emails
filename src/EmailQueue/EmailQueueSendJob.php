@@ -3,8 +3,10 @@ namespace Sinergi\EmailQueue;
 
 use Doctrine\ORM\EntityManager;
 use GearmanJob;
+use Psr\Log\LoggerInterface;
 use Sinergi\EmailQueue\Driver\DriverInterface;
 use Sinergi\Gearman\JobInterface;
+use Doctrine\ORM\EntityRepository;
 
 class EmailQueueSendJob implements JobInterface
 {
@@ -27,21 +29,21 @@ class EmailQueueSendJob implements JobInterface
     private $emailQueueRepository;
 
     /**
-     * @var EmailQueueLogger
+     * @var LoggerInterface
      */
     private $emailQueueLogger;
 
     /**
      * @param DriverInterface $driver
      * @param EntityManager $entityManager
-     * @param EmailQueueRepository $emailQueueRepository
-     * @param null|EmailQueueLogger $emailQueueLogger
+     * @param EmailQueueRepository|EntityRepository $emailQueueRepository
+     * @param null|LoggerInterface $emailQueueLogger
      */
     public function __construct(
         DriverInterface $driver,
         EntityManager $entityManager,
         EmailQueueRepository $emailQueueRepository,
-        EmailQueueLogger $emailQueueLogger = null
+        LoggerInterface $emailQueueLogger = null
     )
     {
         $this->driver = $driver;
