@@ -86,7 +86,7 @@ class EmailQueueEntity
     private $isLocked = false;
 
     /**
-     * @Column(type="datetime", name="locked_datetime" nullable=true)
+     * @Column(type="datetime", name="locked_datetime", nullable=true)
      * @var DateTime|null
      */
     private $lockedDatetime = null;
