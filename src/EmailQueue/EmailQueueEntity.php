@@ -32,16 +32,16 @@ class EmailQueueEntity
     private $attachements;
 
     /**
-     * @Column(type="string", nullable=true, length=255)
+     * @Column(type="string", name="from_name", nullable=true, length=255)
      * @var string|null
      */
-    private $from_name = null;
+    private $fromName = null;
 
     /**
-     * @Column(type="string", length=255)
+     * @Column(type="string", name="from_email", length=255)
      * @var string
      */
-    private $from_email;
+    private $fromEmail;
 
     /**
      * @Column(type="array", name="`to`")
@@ -74,22 +74,22 @@ class EmailQueueEntity
     private $body;
 
     /**
-     * @Column(type="datetime")
+     * @Column(type="datetime", name="created_datetime")
      * @var DateTime
      */
-    private $created_datetime = null;
+    private $createdDatetime = null;
 
     /**
-     * @Column(type="boolean")
+     * @Column(type="boolean", name="is_locked")
      * @var bool
      */
-    private $is_locked = false;
+    private $isLocked = false;
 
     /**
-     * @Column(type="datetime", nullable=true)
+     * @Column(type="datetime", name="locked_datetime" nullable=true)
      * @var DateTime|null
      */
-    private $locked_datetime = null;
+    private $lockedDatetime = null;
 
     public function __construct()
     {
@@ -122,12 +122,12 @@ class EmailQueueEntity
     }
 
     /**
-     * @param DateTime $created_datetime
+     * @param DateTime $createdDatetime
      * @return $this
      */
-    public function setCreatedDatetime(DateTime $created_datetime)
+    public function setCreatedDatetime(DateTime $createdDatetime)
     {
-        $this->created_datetime = $created_datetime;
+        $this->createdDatetime = $createdDatetime;
         return $this;
     }
 
@@ -136,16 +136,16 @@ class EmailQueueEntity
      */
     public function getCreatedDatetime()
     {
-        return $this->created_datetime;
+        return $this->createdDatetime;
     }
 
     /**
-     * @param string $from_email
+     * @param string $fromEmail
      * @return $this
      */
-    public function setFromEmail($from_email)
+    public function setFromEmail($fromEmail)
     {
-        $this->from_email = $from_email;
+        $this->fromEmail = $fromEmail;
         return $this;
     }
 
@@ -154,16 +154,16 @@ class EmailQueueEntity
      */
     public function getFromEmail()
     {
-        return $this->from_email;
+        return $this->fromEmail;
     }
 
     /**
-     * @param null|string $from_name
+     * @param null|string $fromName
      * @return $this
      */
-    public function setFromName($from_name = null)
+    public function setFromName($fromName = null)
     {
-        $this->from_name = $from_name;
+        $this->fromName = $fromName;
         return $this;
     }
 
@@ -172,7 +172,7 @@ class EmailQueueEntity
      */
     public function getFromName()
     {
-        return $this->from_name;
+        return $this->fromName;
     }
 
     /**
@@ -194,12 +194,12 @@ class EmailQueueEntity
     }
 
     /**
-     * @param bool $is_locked
+     * @param bool $isLocked
      * @return $this
      */
-    public function setIsLocked($is_locked)
+    public function setIsLocked($isLocked)
     {
-        $this->is_locked = $is_locked;
+        $this->isLocked = $isLocked;
         return $this;
     }
 
@@ -208,16 +208,16 @@ class EmailQueueEntity
      */
     public function getIsLocked()
     {
-        return $this->is_locked;
+        return $this->isLocked;
     }
 
     /**
-     * @param DateTime|null $locked_datetime
+     * @param DateTime|null $lockedDatetime
      * @return $this
      */
-    public function setLockedDatetime(DateTime $locked_datetime = null)
+    public function setLockedDatetime(DateTime $lockedDatetime = null)
     {
-        $this->locked_datetime = $locked_datetime;
+        $this->lockedDatetime = $lockedDatetime;
         return $this;
     }
 
@@ -226,7 +226,7 @@ class EmailQueueEntity
      */
     public function getLockedDatetime()
     {
-        return $this->locked_datetime;
+        return $this->lockedDatetime;
     }
 
     /**
