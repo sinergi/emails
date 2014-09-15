@@ -17,6 +17,7 @@
         "doctrine/orm": "2.*",
         "cocur/slugify": "0.8.*",
         "znarkus/postmark": "dev-master",
+        "sinergi/gearman": "0.5.*",
         "psr/log": "~1"
     },
     "require-dev": {
