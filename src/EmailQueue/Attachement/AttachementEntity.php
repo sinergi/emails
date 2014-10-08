@@ -2,42 +2,43 @@
 namespace Sinergi\EmailQueue\Attachement;
 
 use Sinergi\EmailQueue\EmailQueueEntity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @Entity
- * @Table(name="email_queue_attachement")
+ * @ORM\Entity
+ * @ORM\Table(name="email_queue_attachement")
  */
 class AttachementEntity
 {
     /** 
-     * @Id 
-     * @Column(type="integer") 
-     * @GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
      * @var int
      */
     private $id;
 
     /**
-     * @ManyToOne(targetEntity="Sinergi\EmailQueue\EmailQueueEntity", inversedBy="attachements")
-     * @JoinColumn(name="email_queue_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Sinergi\EmailQueue\EmailQueueEntity", inversedBy="attachements")
+     * @ORM\JoinColumn(name="email_queue_id", referencedColumnName="id", onDelete="CASCADE")
      * @var EmailQueueEntity
      */
     private $emailQueue;
 
     /**
-     * @Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      * @var string
      */
     private $name;
 
     /**
-     * @Column(type="string", name="mime_type", length=64)
+     * @ORM\Column(type="string", name="mime_type", length=64)
      * @var string
      */
     private $mimeType;
 
     /**
-     * @Column(type="blob")
+     * @ORM\Column(type="blob")
      * @var resource
      */
     private $file;

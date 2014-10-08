@@ -4,25 +4,26 @@ namespace Sinergi\EmailQueue;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Sinergi\EmailQueue\Attachement\AttachementEntity;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @Entity(repositoryClass="Sinergi\EmailQueue\EmailQueueRepository")
- * @Table(name="email_queue")
+ * @ORM\Entity(repositoryClass="Sinergi\EmailQueue\EmailQueueRepository")
+ * @ORM\Table(name="email_queue")
  */
 class EmailQueueEntity
 {
     const LOCK_TIME = 'PT120S';
 
     /**
-     * @Id
-     * @Column(type="integer")
-     * @GeneratedValue
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue
      * @var int
      */
     private $id;
 
     /**
-     * @OneToMany(
+     * @ORM\OneToMany(
      *   targetEntity="Sinergi\EmailQueue\Attachement\AttachementEntity",
      *   mappedBy="emailQueue",
      *   cascade={"persist"}
@@ -32,61 +33,61 @@ class EmailQueueEntity
     private $attachements;
 
     /**
-     * @Column(type="string", name="from_name", nullable=true, length=255)
+     * @ORM\Column(type="string", name="from_name", nullable=true, length=255)
      * @var string|null
      */
     private $fromName = null;
 
     /**
-     * @Column(type="string", name="from_email", length=255)
+     * @ORM\Column(type="string", name="from_email", length=255)
      * @var string
      */
     private $fromEmail;
 
     /**
-     * @Column(type="array", name="`to`")
+     * @ORM\Column(type="array", name="`to`")
      * @var array
      */
     private $to = null;
 
     /**
-     * @Column(type="array")
+     * @ORM\Column(type="array")
      * @var array
      */
     private $cc = null;
 
     /**
-     * @Column(type="array")
+     * @ORM\Column(type="array")
      * @var array
      */
     private $bcc = null;
 
     /**
-     * @Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255)
      * @var string
      */
     private $subject;
 
     /**
-     * @Column(type="text")
+     * @ORM\Column(type="text")
      * @var string
      */
     private $body;
 
     /**
-     * @Column(type="datetime", name="created_datetime")
+     * @ORM\Column(type="datetime", name="created_datetime")
      * @var DateTime
      */
     private $createdDatetime = null;
 
     /**
-     * @Column(type="boolean", name="is_locked")
+     * @ORM\Column(type="boolean", name="is_locked")
      * @var bool
      */
     private $isLocked = false;
 
     /**
-     * @Column(type="datetime", name="locked_datetime", nullable=true)
+     * @ORM\Column(type="datetime", name="locked_datetime", nullable=true)
      * @var DateTime|null
      */
     private $lockedDatetime = null;
