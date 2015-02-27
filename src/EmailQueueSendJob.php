@@ -67,9 +67,8 @@ class EmailQueueSendJob implements JobInterface
      */
     public function execute(GearmanJob $job = null)
     {
-        if (!$this->entityManager->getConnection()->isConnected()) {
-            $this->entityManager->getConnection()->connect();
-        }
+        $this->entityManager->getConnection()->close();
+        $this->entityManager->getConnection()->connect();
 
         $timeStart = time();
         $this->entityManager->flush();
@@ -92,9 +91,8 @@ class EmailQueueSendJob implements JobInterface
             $emailSender = (new EmailQueueSender($this->driver, $this->emailQueueLogger));
 
             if ($emailSender->send($email)) {
-                if (!$this->entityManager->getConnection()->isConnected()) {
-                    $this->entityManager->getConnection()->connect();
-                }
+                $this->entityManager->getConnection()->close();
+                $this->entityManager->getConnection()->connect();
 
                 $this->entityManager->remove($email);
                 $this->entityManager->flush($email);
