@@ -1,10 +1,11 @@
 <?php
-namespace Sinergi\EmailQueue;
+
+namespace Smart\EmailQueue;
 
 use Doctrine\ORM\EntityManager;
 use GearmanJob;
 use Psr\Log\LoggerInterface;
-use Sinergi\EmailQueue\Driver\DriverInterface;
+use Smart\EmailQueue\Driver\DriverInterface;
 use Sinergi\Gearman\JobInterface;
 use Doctrine\ORM\EntityRepository;
 
@@ -66,6 +67,10 @@ class EmailQueueSendJob implements JobInterface
      */
     public function execute(GearmanJob $job = null)
     {
+        if (!$this->entityManager->getConnection()->isConnected()) {
+            $this->entityManager->getConnection()->connect();
+        }
+
         $timeStart = time();
         $this->entityManager->flush();
         $this->entityManager->clear();
@@ -87,9 +92,15 @@ class EmailQueueSendJob implements JobInterface
             $emailSender = (new EmailQueueSender($this->driver, $this->emailQueueLogger));
 
             if ($emailSender->send($email)) {
+                if (!$this->entityManager->getConnection()->isConnected()) {
+                    $this->entityManager->getConnection()->connect();
+                }
+
                 $this->entityManager->remove($email);
                 $this->entityManager->flush($email);
             }
         }
+
+        $this->entityManager->getConnection()->close();
     }
 }

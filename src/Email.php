@@ -1,10 +1,9 @@
 <?php
-namespace Sinergi\EmailQueue;
+
+namespace Smart\EmailQueue;
 
 use Doctrine\ORM\EntityManager;
-use Sinergi\EmailQueue\Attachement\AttachementEntity;
-use Sinergi\EmailQueue\EmailQueueSendJob;
-use Sinergi\EmailQueue\EmailQueueEntity;
+use Smart\EmailQueue\Attachement\AttachementEntity;
 use Sinergi\Gearman\Dispatcher;
 
 abstract class Email

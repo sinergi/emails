@@ -1,5 +1,6 @@
 <?php
-namespace Sinergi\EmailQueue;
+
+namespace Smart\EmailQueue;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;

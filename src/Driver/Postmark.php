@@ -1,9 +1,10 @@
 <?php
-namespace Sinergi\EmailQueue\Driver;
+
+namespace Smart\EmailQueue\Driver;
 
 use Exception;
 use Postmark\Mail;
-use Sinergi\EmailQueue\EmailQueueEntity;
+use Smart\EmailQueue\EmailQueueEntity;
 
 class Postmark implements DriverInterface
 {

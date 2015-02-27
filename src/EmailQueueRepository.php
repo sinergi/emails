@@ -1,5 +1,6 @@
 <?php
-namespace Sinergi\EmailQueue;
+
+namespace Smart\EmailQueue;
 
 use DateInterval;
 use DateTime;

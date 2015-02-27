@@ -1,7 +1,8 @@
 <?php
-namespace Sinergi\EmailQueue\Attachement;
 
-use Sinergi\EmailQueue\EmailQueueEntity;
+namespace Smart\EmailQueue\Attachement;
+
+use Smart\EmailQueue\EmailQueueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,7 +20,7 @@ class AttachementEntity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Sinergi\EmailQueue\EmailQueueEntity", inversedBy="attachements")
+     * @ORM\ManyToOne(targetEntity="Smart\EmailQueue\EmailQueueEntity", inversedBy="attachements")
      * @ORM\JoinColumn(name="email_queue_id", referencedColumnName="id", onDelete="CASCADE")
      * @var EmailQueueEntity
      */

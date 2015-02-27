@@ -1,10 +1,11 @@
 <?php
-namespace Sinergi\EmailQueue;
+
+namespace Smart\EmailQueue;
 
 use Cocur\Slugify\Slugify;
 use Psr\Log\LoggerInterface;
 use Sinergi\Token\StringGenerator;
-use Sinergi\EmailQueue\Attachement\AttachementEntity;
+use Smart\EmailQueue\Attachement\AttachementEntity;
 
 class EmailQueueLogger implements LoggerInterface
 {
@@ -35,7 +36,7 @@ class EmailQueueLogger implements LoggerInterface
     private function logEmail($message, array $context = [])
     {
         if ($this->logDir === null) {
-            return null;
+            return;
         }
 
         if (!is_dir($this->logDir)) {
@@ -164,7 +165,7 @@ class EmailQueueLogger implements LoggerInterface
     {
         if (!empty($message)) {
             if ($this->logFile === null) {
-                return null;
+                return;
             }
             $content = date('Y-m-d H:i:s') . ' ' . $level . ': ' . $message . PHP_EOL;
             file_put_contents($this->logFile, $content, FILE_APPEND);

@@ -1,7 +1,8 @@
 <?php
-namespace Sinergi\EmailQueue\Driver;
 
-use Sinergi\EmailQueue\EmailQueueEntity;
+namespace Smart\EmailQueue\Driver;
+
+use Smart\EmailQueue\EmailQueueEntity;
 
 interface DriverInterface
 {

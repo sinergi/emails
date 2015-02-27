@@ -1,9 +1,9 @@
 {
-    "name": "sinergi/emailqueue",
+    "name": "smart/emailqueue",
     "type": "library",
     "description": "Email Queue powered by Gearman",
     "keywords": ["Email", "Queue", "Gearman"],
-    "homepage": "https://github.com/sinergi/emailqueue",
+    "homepage": "https://github.com/smart-io/emailqueue",
     "license": "MIT",
     "authors": [
         {
@@ -15,8 +15,9 @@
         "php": ">=5.4",
         "symfony/console": "~2",
         "doctrine/orm": "~2",
-        "cocur/slugify": ">=0.8",
-        "sinergi/gearman": ">=0.5",
+        "cocur/slugify": "~1",
+        "sinergi/gearman": "<1",
+        "sinergi/token": "<1",
         "psr/log": "~1"
     },
     "require-dev": {
@@ -28,12 +29,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Sinergi\\EmailQueue\\": "src/EmailQueue"
+            "Smart\\EmailQueue\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Sinergi\\EmailQueue\\Tests\\": ["tests/EmailQueue/Tests", "tests/EmailQueue/Tests/_includes"]
+            "Smart\\EmailQueue\\Tests\\": ["tests/EmailQueue/Tests"]
         }
     }
 }

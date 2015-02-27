@@ -1,9 +1,10 @@
 <?php
-namespace Sinergi\EmailQueue;
+
+namespace Smart\EmailQueue;
 
 use Exception;
 use Psr\Log\LoggerInterface;
-use Sinergi\EmailQueue\Driver\DriverInterface;
+use Smart\EmailQueue\Driver\DriverInterface;
 
 class EmailQueueSender
 {

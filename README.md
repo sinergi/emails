@@ -1,9 +1,9 @@
 EmailQueue
 ==========
 
-[![Build Status](https://img.shields.io/travis/sinergi/emailqueue/master.svg?style=flat)](https://travis-ci.org/sinergi/emailqueue)
-[![Latest Stable Version](http://img.shields.io/packagist/v/sinergi/emailqueue.svg?style=flat)](https://packagist.org/packages/sinergi/emailqueue)
-[![Total Downloads](https://img.shields.io/packagist/dm/sinergi/emailqueue.svg?style=flat)](https://packagist.org/packages/sinergi/emailqueue)
-[![License](https://img.shields.io/packagist/l/sinergi/emailqueue.svg?style=flat)](https://packagist.org/packages/sinergi/emailqueue)
+[![Build Status](https://img.shields.io/travis/smart-io/emailqueue/master.svg?style=flat)](https://travis-ci.org/smart-io/emailqueue)
+[![Latest Stable Version](http://img.shields.io/packagist/v/smart-io/emailqueue.svg?style=flat)](https://packagist.org/packages/smart-io/emailqueue)
+[![Total Downloads](https://img.shields.io/packagist/dm/smart-io/emailqueue.svg?style=flat)](https://packagist.org/packages/smart-io/emailqueue)
+[![License](https://img.shields.io/packagist/l/smart-io/emailqueue.svg?style=flat)](https://packagist.org/packages/smart-io/emailqueue)
 
 No documentation yet.

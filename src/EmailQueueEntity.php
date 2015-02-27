@@ -1,13 +1,14 @@
 <?php
-namespace Sinergi\EmailQueue;
+
+namespace Smart\EmailQueue;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-use Sinergi\EmailQueue\Attachement\AttachementEntity;
+use Smart\EmailQueue\Attachement\AttachementEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Sinergi\EmailQueue\EmailQueueRepository")
+ * @ORM\Entity(repositoryClass="Smart\EmailQueue\EmailQueueRepository")
  * @ORM\Table(name="email_queue")
  */
 class EmailQueueEntity
@@ -24,7 +25,7 @@ class EmailQueueEntity
 
     /**
      * @ORM\OneToMany(
-     *   targetEntity="Sinergi\EmailQueue\Attachement\AttachementEntity",
+     *   targetEntity="Smart\EmailQueue\Attachement\AttachementEntity",
      *   mappedBy="emailQueue",
      *   cascade={"persist"}
      * )
