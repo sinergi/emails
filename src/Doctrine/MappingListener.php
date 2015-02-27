@@ -1,9 +1,10 @@
 <?php
-namespace Sinergi\EmailQueue\Doctrine;
+
+namespace Smart\EmailQueue\Doctrine;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
-use Sinergi\EmailQueue\Config;
-use Sinergi\EmailQueue\ConfigInterface;
+use Smart\EmailQueue\Config;
+use Smart\EmailQueue\ConfigInterface;
 
 class MappingListener
 {

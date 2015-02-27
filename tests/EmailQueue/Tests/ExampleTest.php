@@ -1,6 +1,6 @@
 <?php
 
-namespace Sinergi\EmailQueue\Tests;
+namespace Smart\EmailQueue\Tests;
 
 use PHPUnit_Framework_TestCase;
 

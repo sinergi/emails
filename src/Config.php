@@ -1,5 +1,6 @@
 <?php
-namespace Sinergi\EmailQueue;
+
+namespace Smart\EmailQueue;
 
 class Config implements ConfigInterface
 {
