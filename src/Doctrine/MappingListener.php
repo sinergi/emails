@@ -5,6 +5,7 @@ namespace Smart\EmailQueue\Doctrine;
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Smart\EmailQueue\Config;
 use Smart\EmailQueue\ConfigInterface;
+use Smart\EmailQueue\EmailQueueEntity;
 
 class MappingListener
 {
@@ -48,7 +49,7 @@ class MappingListener
     {
         /** @var \Doctrine\ORM\Mapping\ClassMetadataInfo $classMetadata */
         $classMetadata = $eventArgs->getClassMetadata();
-        if ($classMetadata->getName() === "Sinergi\\EmailQueue\\EmailQueueEntity") {
+        if ($classMetadata->getName() === EmailQueueEntity::class) {
             $tableName = $this->getConfig()->getTableName();
             if (null !== $tableName && isset($classMetadata->table)) {
                 $table = $classMetadata->table;
