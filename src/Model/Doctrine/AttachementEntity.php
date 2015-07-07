@@ -4,6 +4,7 @@ namespace Smart\EmailQueue\Model\Doctrine;
 
 use Doctrine\ORM\Mapping as ORM;
 use Smart\EmailQueue\Model\AttachementEntityInterface;
+use Smart\EmailQueue\Model\EmailQueueEntityInterface;
 
 /**
  * @ORM\Entity
@@ -53,10 +54,10 @@ class AttachementEntity implements AttachementEntityInterface
     }
 
     /**
-     * @param EmailQueueEntity $emailQueue
+     * @param EmailQueueEntityInterface $emailQueue
      * @return $this
      */
-    public function setEmailQueue(EmailQueueEntity $emailQueue)
+    public function setEmailQueue(EmailQueueEntityInterface $emailQueue)
     {
         $this->emailQueue = $emailQueue;
         return $this;
