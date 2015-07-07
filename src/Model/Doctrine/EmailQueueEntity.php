@@ -1,17 +1,17 @@
 <?php
 
-namespace Smart\EmailQueue;
+namespace Smart\EmailQueue\Model\Doctrine;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
-use Smart\EmailQueue\Attachement\AttachementEntity;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\EmailQueue\Model\EmailQueueEntityInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Smart\EmailQueue\EmailQueueRepository")
+ * @ORM\Entity(repositoryClass="Smart\EmailQueue\Model\Doctrine\EmailQueueRepository")
  * @ORM\Table(name="email_queue")
  */
-class EmailQueueEntity
+class EmailQueueEntity implements EmailQueueEntityInterface
 {
     const LOCK_TIME = 'PT120S';
 
@@ -25,7 +25,7 @@ class EmailQueueEntity
 
     /**
      * @ORM\OneToMany(
-     *   targetEntity="Smart\EmailQueue\Attachement\AttachementEntity",
+     *   targetEntity="Smart\EmailQueue\Model\Doctrine\AttachementEntity",
      *   mappedBy="emailQueue",
      *   cascade={"persist"}
      * )
@@ -208,7 +208,7 @@ class EmailQueueEntity
     /**
      * @return bool
      */
-    public function getIsLocked()
+    public function isLocked()
     {
         return $this->isLocked;
     }

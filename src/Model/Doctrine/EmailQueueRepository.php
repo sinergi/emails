@@ -1,15 +1,17 @@
 <?php
 
-namespace Smart\EmailQueue;
+namespace Smart\EmailQueue\Model\Doctrine;
 
 use DateInterval;
 use DateTime;
 use Doctrine\ORM\EntityRepository;
+use Smart\EmailQueue\Model\EmailQueueEntityInterface;
+use Smart\EmailQueue\Model\EmailQueueRepositoryInterface;
 
-class EmailQueueRepository extends EntityRepository
+class EmailQueueRepository extends EntityRepository implements EmailQueueRepositoryInterface
 {
     /**
-     * @return EmailQueueEntity[]
+     * @return EmailQueueEntityInterface[]
      */
     public function findAllUnlocked()
     {

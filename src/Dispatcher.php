@@ -2,7 +2,7 @@
 
 namespace Smart\EmailQueue;
 
-use Smart\EmailQueue\WorkerDriver\WorkerDriverInterface;
+use Smart\EmailQueue\Worker\WorkerDriverInterface;
 
 class Dispatcher implements DispatcherInterface
 {

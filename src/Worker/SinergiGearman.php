@@ -1,6 +1,6 @@
 <?php
 
-namespace Smart\EmailQueue\WorkerDriver;
+namespace Smart\EmailQueue\Worker;
 
 use Sinergi\Gearman\Dispatcher;
 

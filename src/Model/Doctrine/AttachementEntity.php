@@ -1,15 +1,15 @@
 <?php
 
-namespace Smart\EmailQueue\Attachement;
+namespace Smart\EmailQueue\Model\Doctrine;
 
-use Smart\EmailQueue\EmailQueueEntity;
 use Doctrine\ORM\Mapping as ORM;
+use Smart\EmailQueue\Model\AttachementEntityInterface;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="email_queue_attachement")
  */
-class AttachementEntity
+class AttachementEntity implements AttachementEntityInterface
 {
     /** 
      * @ORM\Id
@@ -20,7 +20,7 @@ class AttachementEntity
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Smart\EmailQueue\EmailQueueEntity", inversedBy="attachements")
+     * @ORM\ManyToOne(targetEntity="Smart\EmailQueue\Model\Doctrine\EmailQueueEntity", inversedBy="attachements")
      * @ORM\JoinColumn(name="email_queue_id", referencedColumnName="id", onDelete="CASCADE")
      * @var EmailQueueEntity
      */

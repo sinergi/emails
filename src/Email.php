@@ -3,8 +3,9 @@
 namespace Smart\EmailQueue;
 
 use Doctrine\ORM\EntityManager;
-use Smart\EmailQueue\Attachement\AttachementEntity;
+use Smart\EmailQueue\Model\Doctrine\AttachementEntity;
 use Smart\EmailQueue\EmailQueueSendJob\EmailQueueSendJob;
+use Smart\EmailQueue\Model\Doctrine\EmailQueueEntity;
 
 abstract class Email
 {

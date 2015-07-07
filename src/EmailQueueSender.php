@@ -4,7 +4,9 @@ namespace Smart\EmailQueue;
 
 use Exception;
 use Psr\Log\LoggerInterface;
-use Smart\EmailQueue\EmailDriver\EmailDriverInterface;
+use Smart\EmailQueue\EmailSender\EmailSenderDriverInterface;
+use Smart\EmailQueue\Model\Doctrine\EmailQueueEntity;
+use Smart\EmailQueue\Model\EmailQueueEntityInterface;
 
 class EmailQueueSender
 {
@@ -14,37 +16,37 @@ class EmailQueueSender
     protected $errorMessage;
 
     /**
-     * @var EmailDriverInterface
+     * @var EmailSenderDriverInterface
      */
-    protected $driver;
+    protected $emailSender;
 
     /**
      * @var LoggerInterface
      */
-    protected $emailQueueLogger;
+    protected $logger;
 
     /**
-     * @param EmailDriverInterface $driver
-     * @param LoggerInterface $emailQueueLogger
+     * @param EmailSenderDriverInterface $emailSender
+     * @param LoggerInterface $logger
      */
     public function __construct(
-        EmailDriverInterface $driver,
-        LoggerInterface $emailQueueLogger = null
+        EmailSenderDriverInterface $emailSender,
+        LoggerInterface $logger = null
     )
     {
-        $this->driver = $driver;
-        $this->emailQueueLogger = $emailQueueLogger;
+        $this->emailSender = $emailSender;
+        $this->logger = $logger;
     }
 
     /**
-     * @param EmailQueueEntity $emailQueue
+     * @param EmailQueueEntity|EmailQueueEntityInterface $emailQueue
      * @return bool
      */
-    public function send(EmailQueueEntity $emailQueue)
+    public function send(EmailQueueEntityInterface $emailQueue)
     {
         try {
-            if ($this->driver->send($emailQueue)) {
-                $this->emailQueueLogger->info($emailQueue->getBody(), [
+            if ($this->emailSender->send($emailQueue)) {
+                $this->logger->info($emailQueue->getBody(), [
                     'fromName' => $emailQueue->getFromName(),
                     'fromEmail' => $emailQueue->getFromEmail(),
                     'to' => $emailQueue->getTo(),
@@ -57,7 +59,7 @@ class EmailQueueSender
             }
         } catch (Exception $e) {
             $this->errorMessage = $e->getMessage();
-            $this->emailQueueLogger->error($this->errorMessage, [
+            $this->logger->error($this->errorMessage, [
                 'fromName' => $emailQueue->getFromName(),
                 'fromEmail' => $emailQueue->getFromEmail(),
                 'to' => $emailQueue->getTo(),

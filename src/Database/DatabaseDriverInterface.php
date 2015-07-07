@@ -1,6 +1,6 @@
 <?php
 
-namespace Smart\EmailQueue\DatabaseDriver;
+namespace Smart\EmailQueue\Database;
 
 interface DatabaseDriverInterface
 {

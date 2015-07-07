@@ -1,6 +1,6 @@
 <?php
 
-namespace Smart\EmailQueue\WorkerDriver;
+namespace Smart\EmailQueue\Worker;
 
 use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Message\AMQPMessage;

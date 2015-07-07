@@ -5,8 +5,8 @@ namespace Smart\EmailQueue\EmailQueueSendJob;
 use Doctrine\ORM\EntityManager;
 use Psr\Log\LoggerInterface;
 use Doctrine\ORM\EntityRepository;
-use Smart\EmailQueue\EmailDriver\EmailDriverInterface;
-use Smart\EmailQueue\EmailQueueRepository;
+use Smart\EmailQueue\EmailSender\EmailSenderDriverInterface;
+use Smart\EmailQueue\Model\Doctrine\EmailQueueRepository;
 use Smart\EmailQueue\EmailQueueSender;
 
 class EmailQueueSendJob
@@ -15,9 +15,9 @@ class EmailQueueSendJob
     const TIMEOUT = 60;
 
     /**
-     * @var EmailDriverInterface
+     * @var EmailSenderDriverInterface
      */
-    private $emailDriver;
+    private $emailSender;
 
     /**
      * @var EntityManager
@@ -35,19 +35,19 @@ class EmailQueueSendJob
     private $emailQueueLogger;
 
     /**
-     * @param EmailDriverInterface $emailDriver
+     * @param EmailSenderDriverInterface $emailSender
      * @param EntityManager $entityManager
      * @param EmailQueueRepository|EntityRepository $emailQueueRepository
      * @param null|LoggerInterface $emailQueueLogger
      */
     public function __construct(
-        EmailDriverInterface $emailDriver,
+        EmailSenderDriverInterface $emailSender,
         EntityManager $entityManager,
         EmailQueueRepository $emailQueueRepository,
         LoggerInterface $emailQueueLogger = null
     )
     {
-        $this->emailDriver = $emailDriver;
+        $this->emailSender = $emailSender;
         $this->entityManager = $entityManager;
         $this->emailQueueRepository = $emailQueueRepository;
         $this->emailQueueLogger = $emailQueueLogger;
@@ -87,7 +87,7 @@ class EmailQueueSendJob
                 break;
             }
 
-            $emailSender = (new EmailQueueSender($this->emailDriver, $this->emailQueueLogger));
+            $emailSender = (new EmailQueueSender($this->emailSender, $this->emailQueueLogger));
 
             if ($emailSender->send($email)) {
                 $this->entityManager->getConnection()->close();

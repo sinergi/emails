@@ -1,6 +1,6 @@
 <?php
 
-namespace Smart\EmailQueue\Doctrine;
+namespace Smart\EmailQueue\Database\Doctrine;
 
 use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 use Smart\EmailQueue\Config;

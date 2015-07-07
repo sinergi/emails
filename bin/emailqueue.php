@@ -11,7 +11,15 @@ use Symfony\Component\Console\Application;
 $app = new Application();
 
 $app->addCommands([
-    new \Smart\EmailQueue\Command\SendCommand(new \Smart\EmailQueue\Dispatcher())
+    new \Smart\EmailQueue\Command\SendCommand(
+        new \Smart\EmailQueue\Dispatcher(
+            new \Smart\EmailQueue\Worker\PhpAmqpLib(
+                new PhpAmqpLib\Channel\AMQPChannel(
+                    new PhpAmqpLib\Connection\AMQPStreamConnection()
+                )
+            )
+        )
+    )
 ]);
 
 $app->run();

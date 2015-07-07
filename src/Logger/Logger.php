@@ -1,12 +1,12 @@
 <?php
 
-namespace Smart\EmailQueue;
+namespace Smart\EmailQueue\Logger;
 
 use Cocur\Slugify\Slugify;
 use Psr\Log\LoggerInterface;
-use Smart\EmailQueue\Attachement\AttachementEntity;
+use Smart\EmailQueue\Model\Doctrine\AttachementEntity;
 
-class EmailQueueLogger implements LoggerInterface
+class Logger implements LoggerInterface
 {
     /**
      * @var string
