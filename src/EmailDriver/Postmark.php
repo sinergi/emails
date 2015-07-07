@@ -1,12 +1,12 @@
 <?php
 
-namespace Smart\EmailQueue\Driver;
+namespace Smart\EmailQueue\EmailDriver;
 
 use Exception;
 use Postmark\Mail;
 use Smart\EmailQueue\EmailQueueEntity;
 
-class Postmark implements DriverInterface
+class Postmark implements EmailDriverInterface
 {
     /**
      * @var string

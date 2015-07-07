@@ -4,7 +4,7 @@ namespace Smart\EmailQueue;
 
 use Exception;
 use Psr\Log\LoggerInterface;
-use Smart\EmailQueue\Driver\DriverInterface;
+use Smart\EmailQueue\EmailDriver\EmailDriverInterface;
 
 class EmailQueueSender
 {
@@ -14,7 +14,7 @@ class EmailQueueSender
     protected $errorMessage;
 
     /**
-     * @var DriverInterface
+     * @var EmailDriverInterface
      */
     protected $driver;
 
@@ -24,11 +24,11 @@ class EmailQueueSender
     protected $emailQueueLogger;
 
     /**
-     * @param DriverInterface $driver
+     * @param EmailDriverInterface $driver
      * @param LoggerInterface $emailQueueLogger
      */
     public function __construct(
-        DriverInterface $driver,
+        EmailDriverInterface $driver,
         LoggerInterface $emailQueueLogger = null
     )
     {

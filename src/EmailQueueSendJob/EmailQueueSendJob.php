@@ -1,23 +1,23 @@
 <?php
 
-namespace Smart\EmailQueue;
+namespace Smart\EmailQueue\EmailQueueSendJob;
 
 use Doctrine\ORM\EntityManager;
-use GearmanJob;
 use Psr\Log\LoggerInterface;
-use Smart\EmailQueue\Driver\DriverInterface;
-use Sinergi\Gearman\JobInterface;
 use Doctrine\ORM\EntityRepository;
+use Smart\EmailQueue\EmailDriver\EmailDriverInterface;
+use Smart\EmailQueue\EmailQueueRepository;
+use Smart\EmailQueue\EmailQueueSender;
 
-class EmailQueueSendJob implements JobInterface
+class EmailQueueSendJob
 {
     const JOB_NAME = 'emailqueue:send';
     const TIMEOUT = 60;
 
     /**
-     * @var DriverInterface
+     * @var EmailDriverInterface
      */
-    private $driver;
+    private $emailDriver;
 
     /**
      * @var EntityManager
@@ -35,19 +35,19 @@ class EmailQueueSendJob implements JobInterface
     private $emailQueueLogger;
 
     /**
-     * @param DriverInterface $driver
+     * @param EmailDriverInterface $emailDriver
      * @param EntityManager $entityManager
      * @param EmailQueueRepository|EntityRepository $emailQueueRepository
      * @param null|LoggerInterface $emailQueueLogger
      */
     public function __construct(
-        DriverInterface $driver,
+        EmailDriverInterface $emailDriver,
         EntityManager $entityManager,
         EmailQueueRepository $emailQueueRepository,
         LoggerInterface $emailQueueLogger = null
     )
     {
-        $this->driver = $driver;
+        $this->emailDriver = $emailDriver;
         $this->entityManager = $entityManager;
         $this->emailQueueRepository = $emailQueueRepository;
         $this->emailQueueLogger = $emailQueueLogger;
@@ -62,10 +62,9 @@ class EmailQueueSendJob implements JobInterface
     }
 
     /**
-     * @param GearmanJob|null $job
-     * @return mixed
+     * @return void
      */
-    public function execute(GearmanJob $job = null)
+    public function execute()
     {
         $this->entityManager->getConnection()->close();
         $this->entityManager->getConnection()->connect();
@@ -88,7 +87,7 @@ class EmailQueueSendJob implements JobInterface
                 break;
             }
 
-            $emailSender = (new EmailQueueSender($this->driver, $this->emailQueueLogger));
+            $emailSender = (new EmailQueueSender($this->emailDriver, $this->emailQueueLogger));
 
             if ($emailSender->send($email)) {
                 $this->entityManager->getConnection()->close();

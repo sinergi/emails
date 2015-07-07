@@ -4,7 +4,7 @@ namespace Smart\EmailQueue;
 
 use Doctrine\ORM\EntityManager;
 use Smart\EmailQueue\Attachement\AttachementEntity;
-use Sinergi\Gearman\Dispatcher;
+use Smart\EmailQueue\EmailQueueSendJob\EmailQueueSendJob;
 
 abstract class Email
 {
@@ -60,9 +60,9 @@ abstract class Email
 
     /**
      * @param EntityManager $entityManager
-     * @param Dispatcher $dispatcher
+     * @param DispatcherInterface $dispatcher
      */
-    public function __construct(EntityManager $entityManager, Dispatcher $dispatcher)
+    public function __construct(EntityManager $entityManager, DispatcherInterface $dispatcher)
     {
         $this->entityManager = $entityManager;
         $this->dispatcher = $dispatcher;
@@ -97,7 +97,7 @@ abstract class Email
         $this->entityManager->persist($email);
         $this->entityManager->flush($email);
 
-        $this->dispatcher->background(EmailQueueSendJob::JOB_NAME, null, null, EmailQueueSendJob::JOB_NAME);
+        $this->dispatcher->dispatch(EmailQueueSendJob::JOB_NAME);
         return true;
     }
 

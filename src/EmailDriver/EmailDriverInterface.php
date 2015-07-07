@@ -1,10 +1,10 @@
 <?php
 
-namespace Smart\EmailQueue\Driver;
+namespace Smart\EmailQueue\EmailDriver;
 
 use Smart\EmailQueue\EmailQueueEntity;
 
-interface DriverInterface
+interface EmailDriverInterface
 {
     /**
      * @param EmailQueueEntity $emailQueue

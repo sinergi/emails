@@ -4,7 +4,6 @@ namespace Smart\EmailQueue;
 
 use Cocur\Slugify\Slugify;
 use Psr\Log\LoggerInterface;
-use Sinergi\Token\StringGenerator;
 use Smart\EmailQueue\Attachement\AttachementEntity;
 
 class EmailQueueLogger implements LoggerInterface
@@ -133,7 +132,7 @@ class EmailQueueLogger implements LoggerInterface
                     $slugify->slugify(substr($attachement->getName(), 0, -(strlen($filename)))),
                     0, (128 - strlen($filename))
                 ) . (!empty($filename) ? '.' . $filename : '');
-                $filename = StringGenerator::randomAlnum(8) . '_' . $filename;
+                $filename = uniqid() . '_' . $filename;
                 $body .= "{$attachement->getName()} ({$attachement->getMimeType()}, {$filename}), ";
                 file_put_contents(
                     $attachementDir . DIRECTORY_SEPARATOR . $filename,
