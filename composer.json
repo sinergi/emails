@@ -1,0 +1,35 @@
+{
+  "name": "sinergi/emails",
+  "type": "library",
+  "description": "Email sending and storing library",
+  "keywords": ["Email", "Doctrine", "Postmark"],
+  "homepage": "https://github.com/sinergi/emails",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabriel Bull",
+      "email": "me@gabrielbull.com"
+    }
+  ],
+  "require": {
+    "php": "^7.0",
+    "psr/log": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.4",
+    "doctrine/orm": "^2.5",
+    "illuminate/database": "^5.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sinergi\\Emails\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sinergi\\Emails\\Tests\\": ["tests/EmailQueue/Tests"]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
