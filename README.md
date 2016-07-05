@@ -1,14 +1,14 @@
 # ![Emails](https://cdn.rawgit.com/sinergi/emails/master/emails-logo.svg "Emails")
 
-[![Build Status](https://api.travis-ci.org/sinergi/emails.svg?branch=master)](https://travis-ci.org/sinergi/emails)
-[![StyleCI](https://styleci.io/repos/15456713/shield)](https://styleci.io/repos/15456713)
+[![Build Status](https://travis-ci.org/sinergi/emails.svg?branch=master)](https://travis-ci.org/sinergi/emails)
+[![StyleCI](https://styleci.io/repos/23394809/shield)](https://styleci.io/repos/23394809)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/sinergi/emails/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/sinergi/emails/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/sinergi/emails/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/sinergi/emails/?branch=master)
 [![Code Climate](https://codeclimate.com/github/sinergi/emails/badges/gpa.svg)](https://codeclimate.com/github/sinergi/emails)
 [![Latest Stable Version](http://img.shields.io/packagist/v/sinergi/emails.svg?style=flat)](https://packagist.org/packages/sinergi/emails)
 [![Total Downloads](https://img.shields.io/packagist/dt/sinergi/emails.svg?style=flat)](https://packagist.org/packages/sinergi/emails)
 [![License](https://img.shields.io/packagist/l/sinergi/emails.svg?style=flat)](https://packagist.org/packages/sinergi/emails)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4a9cc9ed-22da-4f03-aa18-9c0c2430c7b6/mini.png)](https://insight.sensiolabs.com/projects/4a9cc9ed-22da-4f03-aa18-9c0c2430c7b6)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/46c8a374-266f-4479-9170-8420acbddb64/mini.png)](https://insight.sensiolabs.com/projects/46c8a374-266f-4479-9170-8420acbddb64)
 [![Join the chat at https://gitter.im/sinergi/emails](https://badges.gitter.im/sinergi/emails.svg)](https://gitter.im/sinergi/emails?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Emails provide cross-framework and multi-platform email storing and sending.
