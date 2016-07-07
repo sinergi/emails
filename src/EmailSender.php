@@ -3,13 +3,12 @@
 namespace Sinergi\Emails;
 
 use Interop\Container\ContainerInterface;
-use Omnimail\Email;
 use Omnimail\EmailInterface;
 use Omnimail\EmailSenderInterface;
 use PDO;
 use Sinergi\Emails\Emails\EmailsRepository;
 
-class EmailSender
+class EmailSender implements \Sinergi\Emails\EmailSenderInterface
 {
     public function __construct(PDO $connection, EmailSenderInterface $emailSender)
     {
@@ -20,7 +19,6 @@ class EmailSender
 
     public function send(EmailInterface $email, bool $storeAttachments = false)
     {
-        $sent = false;
         try {
             $this->emailSender->send($email);
             $sent = true;
